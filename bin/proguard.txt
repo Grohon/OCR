@@ -1,13 +1,13 @@
-# view AndroidManifest.xml #generated:37
+# view AndroidManifest.xml #generated:19
 -keep class bracu.ac.bd.ocr.CaptureActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:44
+# view AndroidManifest.xml #generated:26
 -keep class bracu.ac.bd.ocr.HelpActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:52
+# view AndroidManifest.xml #generated:34
 -keep class bracu.ac.bd.ocr.PreferencesActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:53
+# view AndroidManifest.xml #generated:35
 -keep class bracu.ac.bd.ocr.SplashScreen { <init>(...); }
 
 # view res/layout/capture.xml #generated:27

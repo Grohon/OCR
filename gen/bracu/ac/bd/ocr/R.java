@@ -11,11 +11,11 @@ public final class R {
     public static final class array {
         public static final int capturemodes=0x7f060000;
         /**  Unused 
- Vietnamese 
+ English 
          */
         public static final int iso6391=0x7f060006;
         /**  The elements in this array must match to the languagenames array. 
- Vietnamese 
+ English 
          */
         public static final int iso6393=0x7f060005;
         /**  The elements in this array must match to the iso6393 array. 
@@ -25,12 +25,12 @@ public final class R {
         public static final int pagesegmentationmodes=0x7f060001;
         /**  Translation target codes for Google Translate. 
  The elements in this array must match to the translationtargetlanguagenames_google array. 
- Yiddish 
+ English 
          */
         public static final int translationtargetiso6391_google=0x7f060007;
         /**  Translation target language codes for the Microsoft Translate API. 
  The elements in this array must match to the translationtargetlanguagenames_microsoft array. 
- Vietnamese 
+ English 
          */
         public static final int translationtargetiso6391_microsoft=0x7f060009;
         /**  Translation target names for Google Translate. 

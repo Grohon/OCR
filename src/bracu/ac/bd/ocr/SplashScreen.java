@@ -11,11 +11,6 @@ import android.os.Bundle;
 import android.os.Handler;
 
 public class SplashScreen extends Activity {
-	/*
-	 * Splash screen help taken from:
-	 * http://www.androidhive.info/2013/07/how-to-
-	 * implement-android-splash-screen-2/
-	 */
 
 	private static int SPLASH_TIME_OUT = 3000;
 

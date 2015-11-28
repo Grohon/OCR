@@ -82,7 +82,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
   // Note: These constants will be overridden by any default values defined in preferences.xml.
   
   /** ISO 639-3 language code indicating the default recognition language. */
-  public static final String DEFAULT_SOURCE_LANGUAGE_CODE = "eng";
+  public static final String DEFAULT_SOURCE_LANGUAGE_CODE = "ben";
   
   /** ISO 639-1 language code indicating the default target language for translation. */
   public static final String DEFAULT_TARGET_LANGUAGE_CODE = "es";
@@ -129,9 +129,6 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
   
   /** Languages for which Cube data is available. */
   static final String[] CUBE_SUPPORTED_LANGUAGES = { 
-    "ara", // Arabic
-    "eng", // English
-    "hin" // Hindi
   };
 
   /** Languages that require Cube, and cannot run using Tesseract. */
@@ -411,7 +408,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     if (lastResult != null) {
       handleOcrDecode(lastResult);
     } else {
-      Toast toast = Toast.makeText(this, "OCR failed. Please try again.", Toast.LENGTH_SHORT);
+      Toast toast = Toast.makeText(this, "Recognition Failed!", Toast.LENGTH_SHORT);
       toast.setGravity(Gravity.TOP, 0, 0);
       toast.show();
       resumeContinuousDecoding();
@@ -724,7 +721,7 @@ public final class CaptureActivity extends Activity implements SurfaceHolder.Cal
     
     // Test whether the result is null
     if (ocrResult.getText() == null || ocrResult.getText().equals("")) {
-      Toast toast = Toast.makeText(this, "OCR failed. Please try again.", Toast.LENGTH_SHORT);
+      Toast toast = Toast.makeText(this, "Recognition Failed!", Toast.LENGTH_SHORT);
       toast.setGravity(Gravity.TOP, 0, 0);
       toast.show();
       return false;

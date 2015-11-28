@@ -81,10 +81,12 @@ public final class R {
     public static final class drawable {
         public static final int background=0x7f020000;
         public static final int background_pressed=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int shutter=0x7f020003;
-        public static final int shutter_button=0x7f020004;
-        public static final int shutter_pressed=0x7f020005;
+        public static final int bulogo=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int shutter=0x7f020004;
+        public static final int shutter_button=0x7f020005;
+        public static final int shutter_pressed=0x7f020006;
+        public static final int splash_back=0x7f020007;
     }
     public static final class id {
         public static final int camera_button_view=0x7f080017;
@@ -94,6 +96,7 @@ public final class R {
         public static final int done_button=0x7f08001c;
         public static final int help_contents=0x7f08001b;
         public static final int image_view=0x7f08000e;
+        public static final int imgLogo=0x7f08001d;
         public static final int indeterminate_progress_indicator_view=0x7f080015;
         public static final int ocr_continuous_decode=0x7f080003;
         public static final int ocr_continuous_decode_failed=0x7f080004;
@@ -120,12 +123,15 @@ public final class R {
     public static final class layout {
         public static final int capture=0x7f030000;
         public static final int help=0x7f030001;
+        public static final int splash=0x7f030002;
     }
     public static final class raw {
         public static final int beep=0x7f050000;
     }
     public static final class string {
         public static final int app_name=0x7f090000;
+        public static final int icon_description=0x7f090001;
+        public static final int splash_text=0x7f090002;
     }
     public static final class xml {
         public static final int preferences=0x7f040000;

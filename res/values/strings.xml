@@ -16,5 +16,7 @@
  limitations under the License.
  -->
 <resources>
-    <string name="app_name">OCR Test</string>
+    <string name="app_name">Bangla OCR</string>
+    <string name="icon_description">ImageHolder</string>
+    <string name="splash_text">www.bracu.ac.bd</string>
 </resources>

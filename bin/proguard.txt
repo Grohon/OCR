@@ -1,15 +1,18 @@
 # view AndroidManifest.xml #generated:37
 -keep class bracu.ac.bd.ocr.CaptureActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:48
+# view AndroidManifest.xml #generated:44
 -keep class bracu.ac.bd.ocr.HelpActivity { <init>(...); }
 
-# view AndroidManifest.xml #generated:56
+# view AndroidManifest.xml #generated:52
 -keep class bracu.ac.bd.ocr.PreferencesActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:53
+-keep class bracu.ac.bd.ocr.SplashScreen { <init>(...); }
 
 # view res/layout/capture.xml #generated:27
 -keep class bracu.ac.bd.ocr.ViewfinderView { <init>(...); }
 
 # view res/layout/capture.xml #generated:176
--keep class edu.sfsbracu.ac.bd.ocr.camera.ShutterButton { <init>(...); }
+-keep class bracu.ac.bd.ocr.camera.ShutterButton { <init>(...); }
 

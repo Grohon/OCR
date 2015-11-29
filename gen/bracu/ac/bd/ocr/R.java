@@ -10,14 +10,16 @@ package bracu.ac.bd.ocr;
 public final class R {
     public static final class array {
         public static final int capturemodes=0x7f060000;
+        public static final int exposureEntry=0x7f060006;
+        public static final int exposures=0x7f060005;
         /**  Unused 
  English 
          */
-        public static final int iso6391=0x7f060006;
+        public static final int iso6391=0x7f060008;
         /**  The elements in this array must match to the languagenames array. 
  English 
          */
-        public static final int iso6393=0x7f060005;
+        public static final int iso6393=0x7f060007;
         /**  The elements in this array must match to the iso6393 array. 
          */
         public static final int languagenames=0x7f060004;
@@ -27,20 +29,20 @@ public final class R {
  The elements in this array must match to the translationtargetlanguagenames_google array. 
  English 
          */
-        public static final int translationtargetiso6391_google=0x7f060007;
+        public static final int translationtargetiso6391_google=0x7f060009;
         /**  Translation target language codes for the Microsoft Translate API. 
  The elements in this array must match to the translationtargetlanguagenames_microsoft array. 
  English 
          */
-        public static final int translationtargetiso6391_microsoft=0x7f060009;
+        public static final int translationtargetiso6391_microsoft=0x7f06000b;
         /**  Translation target names for Google Translate. 
  The elements in this array must match to the translationtargetiso6391_google array. 
          */
-        public static final int translationtargetlanguagenames_google=0x7f060008;
+        public static final int translationtargetlanguagenames_google=0x7f06000a;
         /**  Translation target names for the Microsoft Translate API. 
  The elements in this array must match to the translationtargetiso6391_microsoft array. 
          */
-        public static final int translationtargetlanguagenames_microsoft=0x7f06000a;
+        public static final int translationtargetlanguagenames_microsoft=0x7f06000c;
         public static final int translators=0x7f060003;
     }
     public static final class attr {
@@ -83,21 +85,23 @@ public final class R {
         public static final int background_pressed=0x7f020001;
         public static final int bulogo=0x7f020002;
         public static final int ic_launcher=0x7f020003;
-        public static final int shutter=0x7f020004;
-        public static final int shutter_button=0x7f020005;
-        public static final int shutter_pressed=0x7f020006;
-        public static final int splash_back=0x7f020007;
+        public static final int settings=0x7f020004;
+        public static final int shutter=0x7f020005;
+        public static final int shutter_button=0x7f020006;
+        public static final int shutter_pressed=0x7f020007;
+        public static final int splash_back=0x7f020008;
     }
     public static final class id {
         public static final int camera_button_view=0x7f080017;
         public static final int decode=0x7f080000;
         public static final int decode_failed=0x7f080001;
         public static final int decode_succeeded=0x7f080002;
-        public static final int done_button=0x7f08001c;
-        public static final int help_contents=0x7f08001b;
+        public static final int done_button=0x7f08001d;
+        public static final int help_contents=0x7f08001c;
         public static final int image_view=0x7f08000e;
-        public static final int imgLogo=0x7f08001d;
+        public static final int imgLogo=0x7f08001e;
         public static final int indeterminate_progress_indicator_view=0x7f080015;
+        public static final int menu_button=0x7f08001b;
         public static final int ocr_continuous_decode=0x7f080003;
         public static final int ocr_continuous_decode_failed=0x7f080004;
         public static final int ocr_continuous_decode_succeeded=0x7f080005;

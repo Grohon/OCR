@@ -47,6 +47,19 @@
 		<item>English</item>
 	</string-array>
 
+	<string-array name="exposures">
+		<item>Low</item>
+		<item>Medium</item>
+		<item>High</item>
+	</string-array>
+	
+	<string-array name="exposureEntry">
+		<item>low</item>
+		<item>medium</item>
+		<item>high</item>
+	</string-array>
+	
+	
 	<!-- The elements in this array must match to the languagenames array. -->
 	<string-array name="iso6393">
 		<item>ben</item> <!-- Bengali -->

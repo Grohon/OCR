@@ -27,6 +27,11 @@
 			android:key="sourceLanguageCodeOcrPref"
 			android:entries="@array/languagenames"
 			android:entryValues="@array/iso6393" />
+		
+		<ListPreference android:title="Exposure"
+			android:key="exposureControl"
+			android:entries="@array/exposures"
+			android:entryValues="@array/exposureEntry" />
 			
 	</PreferenceCategory>
 

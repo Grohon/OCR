@@ -16,3 +16,6 @@
 # view res/layout/capture.xml #generated:176
 -keep class bracu.ac.bd.ocr.camera.ShutterButton { <init>(...); }
 
+# onClick res/layout/capture.xml #generated:200
+-keepclassmembers class * { *** myMenuMethod(...); }
+

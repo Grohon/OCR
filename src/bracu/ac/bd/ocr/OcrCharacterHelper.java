@@ -55,7 +55,19 @@ public class OcrCharacterHelper {
 			throw new IllegalArgumentException();
 		}
 	}
-
+	public static String getExposure(String exp) {
+		if (exp.equals("low")) {
+			return "low";
+		}
+		else if (exp.equals("medium")) {
+			return "medium";
+		} else if (exp.equals("high")) {
+			return "high";
+		}
+		else {
+			throw new IllegalArgumentException();
+		}
+	}
 	public static String getBlacklist(SharedPreferences prefs,
 			String languageCode) {
 		if (languageCode.equals("ben")) {

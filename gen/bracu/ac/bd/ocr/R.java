@@ -15,34 +15,36 @@ public final class R {
         /**  Unused 
  English 
          */
-        public static final int iso6391=0x7f060008;
+        public static final int iso6391=0x7f06000a;
         /**  The elements in this array must match to the languagenames array. 
  English 
          */
-        public static final int iso6393=0x7f060007;
+        public static final int iso6393=0x7f060009;
         /**  The elements in this array must match to the iso6393 array. 
          */
         public static final int languagenames=0x7f060004;
         public static final int ocrenginemodes=0x7f060002;
         public static final int pagesegmentationmodes=0x7f060001;
+        public static final int torch=0x7f060007;
+        public static final int torchEntry=0x7f060008;
         /**  Translation target codes for Google Translate. 
  The elements in this array must match to the translationtargetlanguagenames_google array. 
  English 
          */
-        public static final int translationtargetiso6391_google=0x7f060009;
+        public static final int translationtargetiso6391_google=0x7f06000b;
         /**  Translation target language codes for the Microsoft Translate API. 
  The elements in this array must match to the translationtargetlanguagenames_microsoft array. 
  English 
          */
-        public static final int translationtargetiso6391_microsoft=0x7f06000b;
+        public static final int translationtargetiso6391_microsoft=0x7f06000d;
         /**  Translation target names for Google Translate. 
  The elements in this array must match to the translationtargetiso6391_google array. 
          */
-        public static final int translationtargetlanguagenames_google=0x7f06000a;
+        public static final int translationtargetlanguagenames_google=0x7f06000c;
         /**  Translation target names for the Microsoft Translate API. 
  The elements in this array must match to the translationtargetiso6391_microsoft array. 
          */
-        public static final int translationtargetlanguagenames_microsoft=0x7f06000c;
+        public static final int translationtargetlanguagenames_microsoft=0x7f06000e;
         public static final int translators=0x7f060003;
     }
     public static final class attr {

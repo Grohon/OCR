@@ -142,18 +142,24 @@ public final class CameraManager {
 		if (theCamera != null && !previewing) {
 			Parameters params;
 			params = theCamera.getParameters();
-			params.setFlashMode(Parameters.FLASH_MODE_TORCH);
 			String str = PreferenceManager.getDefaultSharedPreferences(context)
-					.getString("KEY_EXPOSURE", "medium");
-			int min = params.getMinExposureCompensation();
-			int max = params.getMaxExposureCompensation();
-			int avg=(min+max)/2;
+					.getString("KEY_EXPOSURE", "low");
+			int min = (int) (params.getMinExposureCompensation()+0.5);
+			int max = (int) (params.getMaxExposureCompensation()-0.5);
+			int avg = (min + max) / 2;
 			if (str.equals("high")) {
 				params.setExposureCompensation(max);
-			}else if(str.equals("low")){
+			} else if (str.equals("low")) {
 				params.setExposureCompensation(avg);
+			} else {
+				params.setExposureCompensation((avg + max) / 2);
+			}
+			String flash = PreferenceManager.getDefaultSharedPreferences(
+					context).getString("KEY_TORCH", "OFF");
+			if (flash.equals("OFF")){
+				params.setFlashMode(Parameters.FLASH_MODE_OFF);
 			}else{
-				params.setExposureCompensation((avg+max)/2);
+				params.setFlashMode(Parameters.FLASH_MODE_TORCH);
 			}
 			theCamera.setParameters(params);
 			theCamera.startPreview();

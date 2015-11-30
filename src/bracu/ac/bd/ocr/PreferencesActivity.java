@@ -51,6 +51,7 @@ public class PreferencesActivity extends PreferenceActivity implements
 	public static final String KEY_TOGGLE_LIGHT = "preference_toggle_light";
 	public static final String KEY_TRANSLATOR = "preference_translator";
 	public static final String KEY_EXPOSURE = "exposureControl";
+	public static final String KEY_TORCH = "torchControl";
 
 	// Preference keys carried over from ZXing project
 	public static final String KEY_AUTO_FOCUS = "preferences_auto_focus";
@@ -72,6 +73,7 @@ public class PreferencesActivity extends PreferenceActivity implements
 	private EditTextPreference editTextPreferenceCharacterWhitelist;
 	private ListPreference listPreferencePageSegmentationMode;
 	private ListPreference listExposureControl;
+	private ListPreference listTorchControl;
 
 	private static SharedPreferences sharedPreferences;
 
@@ -105,6 +107,8 @@ public class PreferencesActivity extends PreferenceActivity implements
 				.findPreference(KEY_PAGE_SEGMENTATION_MODE);
 		listExposureControl = (ListPreference) getPreferenceScreen()
 				.findPreference(KEY_EXPOSURE);
+		listTorchControl = (ListPreference) getPreferenceScreen()
+				.findPreference(KEY_TORCH);
 
 		// Create the entries/entryvalues for the translation target language
 		// list.
@@ -206,10 +210,17 @@ public class PreferencesActivity extends PreferenceActivity implements
 		} else if (key.equals(KEY_EXPOSURE)) {
 			listExposureControl.setSummary(PreferenceManager
 					.getDefaultSharedPreferences(getBaseContext()).getString(
-							"KEY_EXPOSURE", "medium"));
+							"KEY_EXPOSURE", "low"));
 			PreferenceManager.getDefaultSharedPreferences(getBaseContext())
 					.edit()
 					.putString("KEY_EXPOSURE", listExposureControl.getValue())
+					.commit();
+		} else if (key.equals(KEY_TORCH)) {
+			listTorchControl.setSummary(PreferenceManager
+					.getDefaultSharedPreferences(getBaseContext()).getString(
+							"KEY_TORCH", "OFF"));
+			PreferenceManager.getDefaultSharedPreferences(getBaseContext())
+					.edit().putString("KEY_TORCH", listTorchControl.getValue())
 					.commit();
 		}
 

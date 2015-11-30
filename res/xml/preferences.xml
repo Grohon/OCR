@@ -32,6 +32,11 @@
 			android:key="exposureControl"
 			android:entries="@array/exposures"
 			android:entryValues="@array/exposureEntry" />
+		
+		<ListPreference android:title="Torch"
+			android:key="torchControl"
+			android:entries="@array/torch"
+			android:entryValues="@array/torchEntry" />
 			
 	</PreferenceCategory>
 

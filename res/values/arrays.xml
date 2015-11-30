@@ -59,6 +59,16 @@
 		<item>high</item>
 	</string-array>
 	
+	<string-array name="torch">
+		<item>ON</item>
+		<item>OFF</item>
+	</string-array>
+	
+	<string-array name="torchEntry">
+		<item>ON</item>
+		<item>OFF</item>
+	</string-array>
+	
 	
 	<!-- The elements in this array must match to the languagenames array. -->
 	<string-array name="iso6393">

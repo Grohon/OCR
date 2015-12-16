@@ -17,8 +17,12 @@
 
 package bracu.ac.bd.ocr;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -121,7 +125,7 @@ public final class CaptureActivity extends Activity implements
 	public static final boolean DEFAULT_TOGGLE_REVERSED_IMAGE = false;
 
 	/** Whether to enable the use of online translation services be default. */
-	public static final boolean DEFAULT_TOGGLE_TRANSLATION = true;
+	public static final boolean DEFAULT_TOGGLE_TRANSLATION = false;
 
 	/** Whether the light should be initially activated by default. */
 	public static final boolean DEFAULT_TOGGLE_LIGHT = false;
@@ -196,8 +200,9 @@ public final class CaptureActivity extends Activity implements
 											// "English"
 	private int pageSegmentationMode = TessBaseAPI.PageSegMode.PSM_AUTO_OSD;
 	private int ocrEngineMode = TessBaseAPI.OEM_TESSERACT_ONLY;
-	private String characterBlacklist;
-	private String characterWhitelist;
+	/*
+	 * private String characterBlacklist; private String characterWhitelist;
+	 */
 	private ShutterButton shutterButton;
 	private boolean isTranslationActive; // Whether we want to show translations
 	private boolean isContinuousModeActive; // Whether we are doing OCR in
@@ -260,10 +265,13 @@ public final class CaptureActivity extends Activity implements
 
 		ocrResultView = (TextView) findViewById(R.id.ocr_result_text_view);
 		registerForContextMenu(ocrResultView);
-		translationView = (TextView) findViewById(R.id.translation_text_view);
-		registerForContextMenu(translationView);
+		/*
+		 * translationView = (TextView)
+		 * findViewById(R.id.translation_text_view);
+		 */
+		/* registerForContextMenu(translationView); */
 
-		progressView = (View) findViewById(R.id.indeterminate_progress_indicator_view);
+		/*progressView = (View) findViewById(R.id.indeterminate_progress_indicator_view);*/
 
 		cameraManager = new CameraManager(getApplication());
 		viewfinderView.setCameraManager(cameraManager);
@@ -468,10 +476,12 @@ public final class CaptureActivity extends Activity implements
 		}
 		if (baseApi != null) {
 			baseApi.setPageSegMode(pageSegmentationMode);
-			/*baseApi.setVariable(TessBaseAPI.VAR_CHAR_BLACKLIST,
-					characterBlacklist);
-			baseApi.setVariable(TessBaseAPI.VAR_CHAR_WHITELIST,
-					characterWhitelist);*/
+			/*
+			 * baseApi.setVariable(TessBaseAPI.VAR_CHAR_BLACKLIST,
+			 * characterBlacklist);
+			 * baseApi.setVariable(TessBaseAPI.VAR_CHAR_WHITELIST,
+			 * characterWhitelist);
+			 */
 		}
 
 		if (hasSurface) {
@@ -683,12 +693,12 @@ public final class CaptureActivity extends Activity implements
 	 * Sets the necessary language code values for the translation target
 	 * language.
 	 */
-	private boolean setTargetLanguage(String languageCode) {
-		targetLanguageCodeTranslation = languageCode;
-		targetLanguageReadable = LanguageCodeHelper.getTranslationLanguageName(
-				this, languageCode);
-		return true;
-	}
+	/*
+	 * private boolean setTargetLanguage(String languageCode) {
+	 * targetLanguageCodeTranslation = languageCode; targetLanguageReadable =
+	 * LanguageCodeHelper.getTranslationLanguageName( this, languageCode);
+	 * return true; }
+	 */
 
 	/** Finds the proper location on the SD card where we can save files. */
 	private File getStorageDirectory() {
@@ -886,40 +896,105 @@ public final class CaptureActivity extends Activity implements
 		TextView sourceLanguageTextView = (TextView) findViewById(R.id.source_language_text_view);
 		sourceLanguageTextView.setText(sourceLanguageReadable);
 		TextView ocrResultTextView = (TextView) findViewById(R.id.ocr_result_text_view);
-		ocrResultTextView.setText(ocrResult.getText());
+		ocrResultTextView.setText(ocrResult.getText());// Important
+		// Log.w("find ", ocrResult.getText());
+		methodPrint(ocrResult.getText());
 		// Crudely scale betweeen 22 and 32 -- bigger font for shorter text
 		int scaledSize = Math.max(22, 32 - ocrResult.getText().length() / 4);
 		ocrResultTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, scaledSize);
 
-		TextView translationLanguageLabelTextView = (TextView) findViewById(R.id.translation_language_label_text_view);
-		TextView translationLanguageTextView = (TextView) findViewById(R.id.translation_language_text_view);
-		TextView translationTextView = (TextView) findViewById(R.id.translation_text_view);
-		if (isTranslationActive) {
-			// Handle translation text fields
-			translationLanguageLabelTextView.setVisibility(View.VISIBLE);
-			translationLanguageTextView.setText(targetLanguageReadable);
-			translationLanguageTextView
-					.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL),
-							Typeface.NORMAL);
-			translationLanguageTextView.setVisibility(View.VISIBLE);
-
-			// Activate/re-activate the indeterminate progress indicator
-			translationTextView.setVisibility(View.GONE);
-			progressView.setVisibility(View.VISIBLE);
-			setProgressBarVisibility(true);
-
-			// Get the translation asynchronously
-			new TranslateAsyncTask(this, sourceLanguageCodeTranslation,
-					targetLanguageCodeTranslation, ocrResult.getText())
-					.execute();
-		} else {
-			translationLanguageLabelTextView.setVisibility(View.GONE);
-			translationLanguageTextView.setVisibility(View.GONE);
-			translationTextView.setVisibility(View.GONE);
-			progressView.setVisibility(View.GONE);
-			setProgressBarVisibility(false);
-		}
+		/*
+		 * TextView translationLanguageLabelTextView = (TextView)
+		 * findViewById(R.id.translation_language_label_text_view); TextView
+		 * translationLanguageTextView = (TextView)
+		 * findViewById(R.id.translation_language_text_view); TextView
+		 * translationTextView = (TextView)
+		 * findViewById(R.id.translation_text_view); if (isTranslationActive) {
+		 * // Handle translation text fields
+		 * translationLanguageLabelTextView.setVisibility(View.VISIBLE);
+		 * translationLanguageTextView.setText(targetLanguageReadable);
+		 * translationLanguageTextView
+		 * .setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL),
+		 * Typeface.NORMAL);
+		 * translationLanguageTextView.setVisibility(View.VISIBLE);
+		 * 
+		 * // Activate/re-activate the indeterminate progress indicator
+		 * translationTextView.setVisibility(View.GONE);
+		 * progressView.setVisibility(View.VISIBLE);
+		 * setProgressBarVisibility(true);
+		 * 
+		 * // Get the translation asynchronously new TranslateAsyncTask(this,
+		 * sourceLanguageCodeTranslation, targetLanguageCodeTranslation,
+		 * ocrResult.getText()) .execute(); } else {
+		 * translationLanguageLabelTextView.setVisibility(View.GONE);
+		 * translationLanguageTextView.setVisibility(View.GONE);
+		 * translationTextView.setVisibility(View.GONE);
+		 * progressView.setVisibility(View.GONE);
+		 * setProgressBarVisibility(false); }
+		 */
 		return true;
+	}
+
+	private void methodPrint(String str) {
+
+		// In first launch of application creates db.txt writes 0 in it.
+		File folder = new File(Environment.getExternalStorageDirectory()
+				+ "/dristee");
+		boolean success = true;
+		if (!folder.exists()) {
+			success = folder.mkdir();
+		}
+		if (success) {
+			try {
+				File db = new File(folder + "/db.txt");
+				if (!db.exists()) {
+					db.createNewFile();
+					FileOutputStream initWritePen = new FileOutputStream(db);
+					OutputStreamWriter initWriteInk = new OutputStreamWriter(
+							initWritePen);
+					initWriteInk.append("0\n");
+					initWriteInk.close();
+					initWritePen.close();
+				}
+
+				// This helps reading from db.txt of how many files exist
+				// previously
+				File file = new File(folder, "db.txt");
+				String text = "";
+				BufferedReader br = new BufferedReader(new FileReader(file));
+				String line;
+
+				while ((line = br.readLine()) != null) {
+					text += line + "\n";
+				}
+				br.close();
+
+				int ext = Integer.parseInt(text.toString().trim());
+				// This increments the last file number
+				ext++;
+
+				FileOutputStream initWritePen = new FileOutputStream(db);
+				OutputStreamWriter initWriteInk = new OutputStreamWriter(
+						initWritePen);
+				initWriteInk.append("" + ext);
+				initWriteInk.close();
+				initWritePen.close();
+
+				// Creates new files to save data scanned.
+				File myFile = new File(folder + "/file" + ext + ".txt");
+
+				myFile.createNewFile();
+
+				FileOutputStream fOut = new FileOutputStream(myFile);
+				OutputStreamWriter myOutWriter = new OutputStreamWriter(fOut);
+				myOutWriter.append(str);
+				myOutWriter.close();
+				fOut.close();
+			} catch (Exception e) {
+				Toast.makeText(getBaseContext(), e.getMessage(),
+						Toast.LENGTH_SHORT).show();
+			}
+		}
 	}
 
 	/**
@@ -1274,11 +1349,15 @@ public final class CaptureActivity extends Activity implements
 		setSourceLanguage(prefs.getString(
 				PreferencesActivity.KEY_SOURCE_LANGUAGE_PREFERENCE,
 				CaptureActivity.DEFAULT_SOURCE_LANGUAGE_CODE));
-		setTargetLanguage(prefs.getString(
-				PreferencesActivity.KEY_TARGET_LANGUAGE_PREFERENCE,
-				CaptureActivity.DEFAULT_TARGET_LANGUAGE_CODE));
-		isTranslationActive = prefs.getBoolean(
-				PreferencesActivity.KEY_TOGGLE_TRANSLATION, false);
+		/*
+		 * setTargetLanguage(prefs.getString(
+		 * PreferencesActivity.KEY_TARGET_LANGUAGE_PREFERENCE,
+		 * CaptureActivity.DEFAULT_TARGET_LANGUAGE_CODE));
+		 */
+		/*
+		 * isTranslationActive = prefs.getBoolean(
+		 * PreferencesActivity.KEY_TOGGLE_TRANSLATION, false);
+		 */
 
 		// Retrieve from preferences, and set in this Activity, the capture mode
 		// preference
@@ -1331,11 +1410,12 @@ public final class CaptureActivity extends Activity implements
 		}
 
 		// Retrieve from preferences, and set in this Activity, the character
-		/*// blacklist and whitelist
-		characterBlacklist = OcrCharacterHelper.getBlacklist(prefs,
-				sourceLanguageCodeOcr);
-		characterWhitelist = OcrCharacterHelper.getWhitelist(prefs,
-				sourceLanguageCodeOcr);*/
+		/*
+		 * // blacklist and whitelist characterBlacklist =
+		 * OcrCharacterHelper.getBlacklist(prefs, sourceLanguageCodeOcr);
+		 * characterWhitelist = OcrCharacterHelper.getWhitelist(prefs,
+		 * sourceLanguageCodeOcr);
+		 */
 
 		prefs.registerOnSharedPreferenceChangeListener(listener);
 
@@ -1364,15 +1444,15 @@ public final class CaptureActivity extends Activity implements
 				.putBoolean(PreferencesActivity.KEY_TOGGLE_TRANSLATION,
 						CaptureActivity.DEFAULT_TOGGLE_TRANSLATION).commit();
 
-		// Translation target language
-		prefs.edit()
-				.putString(PreferencesActivity.KEY_TARGET_LANGUAGE_PREFERENCE,
-						CaptureActivity.DEFAULT_TARGET_LANGUAGE_CODE).commit();
-
-		// Translator
-		prefs.edit()
-				.putString(PreferencesActivity.KEY_TRANSLATOR,
-						CaptureActivity.DEFAULT_TRANSLATOR).commit();
+		/*
+		 * // Translation target language prefs.edit()
+		 * .putString(PreferencesActivity.KEY_TARGET_LANGUAGE_PREFERENCE,
+		 * CaptureActivity.DEFAULT_TARGET_LANGUAGE_CODE).commit();
+		 * 
+		 * // Translator prefs.edit()
+		 * .putString(PreferencesActivity.KEY_TRANSLATOR,
+		 * CaptureActivity.DEFAULT_TRANSLATOR).commit();
+		 */
 
 		// OCR Engine
 		prefs.edit()
@@ -1395,21 +1475,17 @@ public final class CaptureActivity extends Activity implements
 				.putBoolean(PreferencesActivity.KEY_PLAY_BEEP,
 						CaptureActivity.DEFAULT_TOGGLE_BEEP).commit();
 
-		/*// Character blacklist
-		prefs.edit()
-				.putString(
-						PreferencesActivity.KEY_CHARACTER_BLACKLIST,
-						OcrCharacterHelper
-								.getDefaultBlacklist(CaptureActivity.DEFAULT_SOURCE_LANGUAGE_CODE))
-				.commit();
-
-		// Character whitelist
-		prefs.edit()
-				.putString(
-						PreferencesActivity.KEY_CHARACTER_WHITELIST,
-						OcrCharacterHelper
-								.getDefaultWhitelist(CaptureActivity.DEFAULT_SOURCE_LANGUAGE_CODE))
-				.commit();*/
+		/*
+		 * // Character blacklist prefs.edit() .putString(
+		 * PreferencesActivity.KEY_CHARACTER_BLACKLIST, OcrCharacterHelper
+		 * .getDefaultBlacklist(CaptureActivity.DEFAULT_SOURCE_LANGUAGE_CODE))
+		 * .commit();
+		 * 
+		 * // Character whitelist prefs.edit() .putString(
+		 * PreferencesActivity.KEY_CHARACTER_WHITELIST, OcrCharacterHelper
+		 * .getDefaultWhitelist(CaptureActivity.DEFAULT_SOURCE_LANGUAGE_CODE))
+		 * .commit();
+		 */
 
 		// Page segmentation mode
 		prefs.edit()

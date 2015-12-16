@@ -83,7 +83,7 @@ public class LanguageCodeHelper {
 	 *            ISO 639-1 language code
 	 * @return name of the language. For example, "English"
 	 */
-	public static String getTranslationLanguageName(Context context,
+	/*public static String getTranslationLanguageName(Context context,
 			String languageCode) {
 		Resources res = context.getResources();
 		String[] language6391 = res
@@ -123,5 +123,5 @@ public class LanguageCodeHelper {
 						+ languageCode);
 		return "";
 	}
-
+*/
 }

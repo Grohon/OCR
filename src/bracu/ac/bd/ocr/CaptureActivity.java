@@ -85,7 +85,7 @@ public final class CaptureActivity extends Activity implements
 	// preferences.xml.
 
 	/** ISO 639-3 language code indicating the default recognition language. */
-	public static final String DEFAULT_SOURCE_LANGUAGE_CODE = "ben";
+	public static final String DEFAULT_SOURCE_LANGUAGE_CODE = "bensol";
 
 	/**
 	 * ISO 639-1 language code indicating the default target language for
@@ -146,8 +146,7 @@ public final class CaptureActivity extends Activity implements
 	};
 
 	/** Resource to use for data file downloads. */
-	static final String DOWNLOAD_BASE = "http://tesseract-ocr.googlecode.com/files/";
-	// static final String DOWNLOAD_BASE = "file:///android_asset/www/";
+	static final String DOWNLOAD_BASE = "http://quickwork24.com/dristee/";
 	/** Download filename for orientation and script detection (OSD) data. */
 	static final String OSD_FILENAME = "tesseract-ocr-3.01.osd.tar";
 
@@ -469,10 +468,10 @@ public final class CaptureActivity extends Activity implements
 		}
 		if (baseApi != null) {
 			baseApi.setPageSegMode(pageSegmentationMode);
-			baseApi.setVariable(TessBaseAPI.VAR_CHAR_BLACKLIST,
+			/*baseApi.setVariable(TessBaseAPI.VAR_CHAR_BLACKLIST,
 					characterBlacklist);
 			baseApi.setVariable(TessBaseAPI.VAR_CHAR_WHITELIST,
-					characterWhitelist);
+					characterWhitelist);*/
 		}
 
 		if (hasSurface) {
@@ -1332,11 +1331,11 @@ public final class CaptureActivity extends Activity implements
 		}
 
 		// Retrieve from preferences, and set in this Activity, the character
-		// blacklist and whitelist
+		/*// blacklist and whitelist
 		characterBlacklist = OcrCharacterHelper.getBlacklist(prefs,
 				sourceLanguageCodeOcr);
 		characterWhitelist = OcrCharacterHelper.getWhitelist(prefs,
-				sourceLanguageCodeOcr);
+				sourceLanguageCodeOcr);*/
 
 		prefs.registerOnSharedPreferenceChangeListener(listener);
 
@@ -1396,7 +1395,7 @@ public final class CaptureActivity extends Activity implements
 				.putBoolean(PreferencesActivity.KEY_PLAY_BEEP,
 						CaptureActivity.DEFAULT_TOGGLE_BEEP).commit();
 
-		// Character blacklist
+		/*// Character blacklist
 		prefs.edit()
 				.putString(
 						PreferencesActivity.KEY_CHARACTER_BLACKLIST,
@@ -1410,7 +1409,7 @@ public final class CaptureActivity extends Activity implements
 						PreferencesActivity.KEY_CHARACTER_WHITELIST,
 						OcrCharacterHelper
 								.getDefaultWhitelist(CaptureActivity.DEFAULT_SOURCE_LANGUAGE_CODE))
-				.commit();
+				.commit();*/
 
 		// Page segmentation mode
 		prefs.edit()

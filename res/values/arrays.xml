@@ -43,8 +43,10 @@
 
 	<!-- The elements in this array must match to the iso6393 array. -->
 	<string-array name="languagenames">
-		<item>Bengali</item>
-		<item>English</item>
+		<item>AdorshoLipi</item>
+		<item>Kalpurush</item>
+		<item>Nikosh</item>
+		<item>SolaimanLipi</item>
 	</string-array>
 
 	<string-array name="exposures">
@@ -72,8 +74,10 @@
 	
 	<!-- The elements in this array must match to the languagenames array. -->
 	<string-array name="iso6393">
-		<item>ben</item> <!-- Bengali -->
-		<item>eng</item> <!-- English -->
+		<item>benador</item>
+		<item>benkal</item>
+		<item>bennik</item>
+		<item>bensol</item>
 	</string-array>
 
 	<!-- Unused --> 

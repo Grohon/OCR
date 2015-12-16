@@ -17,7 +17,6 @@ public final class R {
          */
         public static final int iso6391=0x7f06000a;
         /**  The elements in this array must match to the languagenames array. 
- English 
          */
         public static final int iso6393=0x7f060009;
         /**  The elements in this array must match to the iso6393 array. 

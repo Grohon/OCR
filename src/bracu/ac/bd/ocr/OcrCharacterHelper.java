@@ -31,31 +31,14 @@ public class OcrCharacterHelper {
 	} // Private constructor to enforce noninstantiability
 
 	public static String getDefaultBlacklist(String languageCode) {
-		// final String DEFAULT_BLACKLIST = "`~|";
-
-		if (languageCode.equals("ben")) {
-			return "";
-		} // Bengali
-		else if (languageCode.equals("eng")) {
-			return "";
-		} // English
-		else {
-			throw new IllegalArgumentException();
-		}
+		return "";
 	}
 
 	public static String getDefaultWhitelist(String languageCode) {
-		if (languageCode.equals("ben")) {
-			return "";
-		} // Bengali
-		else if (languageCode.equals("eng")) {
-			return "!?@#$%&*()<>_-+=/.,:;'\"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-		} // English
-		else {
-			throw new IllegalArgumentException();
-		}
+		return "";
 	}
-	public static String getExposure(String exp) {
+	
+	/*public static String getExposure(String exp) {
 		if (exp.equals("low")) {
 			return "low";
 		}
@@ -67,10 +50,10 @@ public class OcrCharacterHelper {
 		else {
 			throw new IllegalArgumentException();
 		}
-	}
-	public static String getBlacklist(SharedPreferences prefs,
+	}*/
+	/*public static String getBlacklist(SharedPreferences prefs,
 			String languageCode) {
-		if (languageCode.equals("ben")) {
+		if (languageCode.equals("bensol")) {
 			return prefs.getString(KEY_CHARACTER_BLACKLIST_BENGALI,
 					getDefaultBlacklist(languageCode));
 		} else if (languageCode.equals("eng")) {
@@ -83,7 +66,7 @@ public class OcrCharacterHelper {
 
 	public static String getWhitelist(SharedPreferences prefs,
 			String languageCode) {
-		if (languageCode.equals("ben")) {
+		if (languageCode.equals("bensol")) {
 			return prefs.getString(KEY_CHARACTER_WHITELIST_BENGALI,
 					getDefaultWhitelist(languageCode));
 		} else if (languageCode.equals("eng")) {
@@ -92,11 +75,11 @@ public class OcrCharacterHelper {
 		} else {
 			throw new IllegalArgumentException();
 		}
-	}
+	}*/
 
-	public static void setBlacklist(SharedPreferences prefs,
+	/*public static void setBlacklist(SharedPreferences prefs,
 			String languageCode, String blacklist) {
-		if (languageCode.equals("ben")) {
+		if (languageCode.equals("bensol")) {
 			prefs.edit().putString(KEY_CHARACTER_BLACKLIST_BENGALI, blacklist)
 					.commit();
 		} else if (languageCode.equals("eng")) {
@@ -109,7 +92,7 @@ public class OcrCharacterHelper {
 
 	public static void setWhitelist(SharedPreferences prefs,
 			String languageCode, String whitelist) {
-		if (languageCode.equals("ben")) {
+		if (languageCode.equals("bensol")) {
 			prefs.edit().putString(KEY_CHARACTER_WHITELIST_BENGALI, whitelist)
 					.commit();
 		} else if (languageCode.equals("eng")) {
@@ -118,5 +101,5 @@ public class OcrCharacterHelper {
 		} else {
 			throw new IllegalArgumentException();
 		}
-	}
+	}*/
 }

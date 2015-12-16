@@ -217,7 +217,7 @@ final class OcrInitAsyncTask extends AsyncTask<String, String, Boolean> {
               tessdataDir);
           installSuccess = true;
         } catch (IOException e) {
-          Log.e(TAG, "Untar failed");
+          Log.e(TAG, "Untar failed" + tessdataDir.toString() + File.separator + destinationFilenameBase+ e);
           return false;
         }
       }

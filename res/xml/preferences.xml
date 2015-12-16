@@ -39,7 +39,7 @@
 			android:entryValues="@array/torchEntry" />
 			
 	</PreferenceCategory>
-
+		
 	<!-- TRANSLATION SETTINGS -->
 	<PreferenceCategory android:title="Translation settings">
 

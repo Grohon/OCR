@@ -29,10 +29,14 @@ public class LanguageCodeHelper {
 	 * @return ISO 639-1 language code
 	 */
 	public static String mapLanguageCode(String languageCode) {
-		if (languageCode.equals("ben")) { // Bengali
+		if (languageCode.equals("bensol")) { // Bengali
 			return "bn";
-		} else if (languageCode.equals("eng")) { // English
-			return "en";
+		} else if (languageCode.equals("benador")) { // English
+			return "bn";
+		}else if (languageCode.equals("bennik")) { // English
+			return "bn";
+		}else if (languageCode.equals("benkal")) { // English
+			return "bn";
 		} else {
 			return "";
 		}

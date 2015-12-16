@@ -46,8 +46,8 @@ public class PreferencesActivity extends PreferenceActivity implements
 	public static final String KEY_CONTINUOUS_PREVIEW = "preference_capture_continuous";
 	public static final String KEY_PAGE_SEGMENTATION_MODE = "preference_page_segmentation_mode";
 	public static final String KEY_OCR_ENGINE_MODE = "preference_ocr_engine_mode";
-	public static final String KEY_CHARACTER_BLACKLIST = "preference_character_blacklist";
-	public static final String KEY_CHARACTER_WHITELIST = "preference_character_whitelist";
+	/*public static final String KEY_CHARACTER_BLACKLIST = "preference_character_blacklist";
+	public static final String KEY_CHARACTER_WHITELIST = "preference_character_whitelist";*/
 	public static final String KEY_TOGGLE_LIGHT = "preference_toggle_light";
 	public static final String KEY_TRANSLATOR = "preference_translator";
 	public static final String KEY_EXPOSURE = "exposureControl";
@@ -69,8 +69,8 @@ public class PreferencesActivity extends PreferenceActivity implements
 	private ListPreference listPreferenceTargetLanguage;
 	private ListPreference listPreferenceTranslator;
 	private ListPreference listPreferenceOcrEngineMode;
-	private EditTextPreference editTextPreferenceCharacterBlacklist;
-	private EditTextPreference editTextPreferenceCharacterWhitelist;
+	/*private EditTextPreference editTextPreferenceCharacterBlacklist;
+	private EditTextPreference editTextPreferenceCharacterWhitelist;*/
 	private ListPreference listPreferencePageSegmentationMode;
 	private ListPreference listExposureControl;
 	private ListPreference listTorchControl;
@@ -99,10 +99,10 @@ public class PreferencesActivity extends PreferenceActivity implements
 				.findPreference(KEY_TRANSLATOR);
 		listPreferenceOcrEngineMode = (ListPreference) getPreferenceScreen()
 				.findPreference(KEY_OCR_ENGINE_MODE);
-		editTextPreferenceCharacterBlacklist = (EditTextPreference) getPreferenceScreen()
+		/*editTextPreferenceCharacterBlacklist = (EditTextPreference) getPreferenceScreen()
 				.findPreference(KEY_CHARACTER_BLACKLIST);
 		editTextPreferenceCharacterWhitelist = (EditTextPreference) getPreferenceScreen()
-				.findPreference(KEY_CHARACTER_WHITELIST);
+				.findPreference(KEY_CHARACTER_WHITELIST);*/
 		listPreferencePageSegmentationMode = (ListPreference) getPreferenceScreen()
 				.findPreference(KEY_PAGE_SEGMENTATION_MODE);
 		listExposureControl = (ListPreference) getPreferenceScreen()
@@ -113,7 +113,12 @@ public class PreferencesActivity extends PreferenceActivity implements
 		// Create the entries/entryvalues for the translation target language
 		// list.
 		initTranslationTargetList();
-
+		listExposureControl.setSummary(PreferenceManager
+				.getDefaultSharedPreferences(getBaseContext()).getString(
+						"KEY_EXPOSURE", "low"));
+		listTorchControl.setSummary(PreferenceManager
+				.getDefaultSharedPreferences(getBaseContext()).getString(
+						"KEY_TORCH", "OFF"));
 	}
 
 	/**
@@ -145,20 +150,20 @@ public class PreferencesActivity extends PreferenceActivity implements
 											CaptureActivity.DEFAULT_SOURCE_LANGUAGE_CODE)));
 
 			// Retrieve the character blacklist/whitelist for the new language
-			String blacklist = OcrCharacterHelper.getBlacklist(
+			/*String blacklist = OcrCharacterHelper.getBlacklist(
 					sharedPreferences, listPreferenceSourceLanguage.getValue());
 			String whitelist = OcrCharacterHelper.getWhitelist(
-					sharedPreferences, listPreferenceSourceLanguage.getValue());
+					sharedPreferences, listPreferenceSourceLanguage.getValue());*/
 
 			// Save the character blacklist/whitelist to preferences
-			sharedPreferences.edit()
+			/*sharedPreferences.edit()
 					.putString(KEY_CHARACTER_BLACKLIST, blacklist).commit();
 			sharedPreferences.edit()
-					.putString(KEY_CHARACTER_WHITELIST, whitelist).commit();
+					.putString(KEY_CHARACTER_WHITELIST, whitelist).commit();*/
 
 			// Set the blacklist/whitelist summary text
-			editTextPreferenceCharacterBlacklist.setSummary(blacklist);
-			editTextPreferenceCharacterWhitelist.setSummary(whitelist);
+			/*editTextPreferenceCharacterBlacklist.setSummary(blacklist);
+			editTextPreferenceCharacterWhitelist.setSummary(whitelist);*/
 
 		} else if (key.equals(KEY_TARGET_LANGUAGE_PREFERENCE)) {
 			listPreferenceTargetLanguage
@@ -175,7 +180,7 @@ public class PreferencesActivity extends PreferenceActivity implements
 		} else if (key.equals(KEY_OCR_ENGINE_MODE)) {
 			listPreferenceOcrEngineMode.setSummary(sharedPreferences.getString(
 					key, CaptureActivity.DEFAULT_OCR_ENGINE_MODE));
-		} else if (key.equals(KEY_CHARACTER_BLACKLIST)) {
+		}/* else if (key.equals(KEY_CHARACTER_BLACKLIST)) {
 
 			// Save a separate, language-specific character blacklist for this
 			// language
@@ -207,27 +212,27 @@ public class PreferencesActivity extends PreferenceActivity implements
 							.getDefaultWhitelist(listPreferenceSourceLanguage
 									.getValue())));
 
-		} else if (key.equals(KEY_EXPOSURE)) {
-			listExposureControl.setSummary(PreferenceManager
-					.getDefaultSharedPreferences(getBaseContext()).getString(
-							"KEY_EXPOSURE", "low"));
+		} */else if (key.equals(KEY_EXPOSURE)) {
 			PreferenceManager.getDefaultSharedPreferences(getBaseContext())
 					.edit()
 					.putString("KEY_EXPOSURE", listExposureControl.getValue())
 					.commit();
-		} else if (key.equals(KEY_TORCH)) {
-			listTorchControl.setSummary(PreferenceManager
+			listExposureControl.setSummary(PreferenceManager
 					.getDefaultSharedPreferences(getBaseContext()).getString(
-							"KEY_TORCH", "OFF"));
+							"KEY_EXPOSURE", "low"));
+		} else if (key.equals(KEY_TORCH)) {
 			PreferenceManager.getDefaultSharedPreferences(getBaseContext())
 					.edit().putString("KEY_TORCH", listTorchControl.getValue())
 					.commit();
+			listTorchControl.setSummary(PreferenceManager
+					.getDefaultSharedPreferences(getBaseContext()).getString(
+							"KEY_TORCH", "OFF"));
 		}
 
 		// Update the languages available for translation based on the current
 		// translator selected.
 		if (key.equals(KEY_TRANSLATOR)) {
-			initTranslationTargetList();
+			//initTranslationTargetList();
 		}
 
 	}
@@ -310,14 +315,14 @@ public class PreferencesActivity extends PreferenceActivity implements
 						CaptureActivity.DEFAULT_PAGE_SEGMENTATION_MODE));
 		listPreferenceOcrEngineMode.setSummary(sharedPreferences.getString(
 				KEY_OCR_ENGINE_MODE, CaptureActivity.DEFAULT_OCR_ENGINE_MODE));
-		editTextPreferenceCharacterBlacklist.setSummary(sharedPreferences
+		/*editTextPreferenceCharacterBlacklist.setSummary(sharedPreferences
 				.getString(KEY_CHARACTER_BLACKLIST, OcrCharacterHelper
 						.getDefaultBlacklist(listPreferenceSourceLanguage
 								.getValue())));
 		editTextPreferenceCharacterWhitelist.setSummary(sharedPreferences
 				.getString(KEY_CHARACTER_WHITELIST, OcrCharacterHelper
 						.getDefaultWhitelist(listPreferenceSourceLanguage
-								.getValue())));
+								.getValue())));*/
 
 		// Set up a listener whenever a key changes
 		getPreferenceScreen().getSharedPreferences()
